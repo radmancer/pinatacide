@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piñatacide Network</title>
+    <style>
+        /* Resetting margin and padding for body to ensure full-width coverage */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Prevent scrolling due to animation */
+        }
+
+        /* Make sure the container div is always square and full width */
+        .square-container {
+            width: 100vw; /* Full viewport width */
+            height: 100vw; /* Same as width to maintain a square shape */
+            display: flex;
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
+            position: relative; /* Needed for positioning pseudo-elements */
+            background-color: black; /* Dark background for VHS effect */
+            overflow: hidden; /* Hide overflow for the pseudo-element */
+        }
+
+        /* Center the text */
+        .square-container h1 {
+            margin: 0;
+            font-size: 2rem; /* Responsive text size */
+            color: #fff; /* White text color for contrast */
+            font-family: 'Helvetica', 'Arial', sans-serif; /* Helvetica font with fallbacks */
+            filter: brightness(0.8) contrast(1.2) blur(1px); /* Simulate CRT effect */
+            z-index: 1; /* Ensure text is on top */
+            position: relative;
+            animation: flicker 0.1s infinite alternate; /* Flicker effect */
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(1px); }
+            100% { transform: translateX(-1px); }
+        }
+
+        /* VHS effect with warpy line at the bottom */
+        .square-container::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px; /* Height of the warpy line */
+            background: repeating-linear-gradient(
+                rgba(255, 255, 255, 0.1) 0px,
+                rgba(255, 255, 255, 0.1) 2px,
+                rgba(0, 0, 0, 0.1) 2px,
+                rgba(0, 0, 0, 0.1) 3px
+            );
+            background-size: 100% 5px;
+            animation: warp-line 1s infinite linear; /* Warpy effect */
+        }
+
+        @keyframes warp-line {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="square-container">
+        <h1>[ Piñatacide ]</h1>
+    </div>
+</body>
+</html>
